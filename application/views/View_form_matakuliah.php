@@ -23,13 +23,15 @@
                 <th>:</th>
                 <td>
                     <input type="text" name="kode" id="kode" placeholder="Input Kode MTK">
+                    <div class="invalid-feedback"><?=form_error('kode')?></div>
                 </td>
             </tr>
             <tr>
                 <th>Nama MTK</th>
                 <td>:</td>
                 <td>
-                    <input type="text" name="nama" id="kode" placeholder="Input Nama MTK">  
+                    <input type="text" name="nama" id="nama" placeholder="Input Nama MTK">
+                    <div class="invalid-feedback"><?=form_error('nama')?></div>  
                 </td>
             </tr>
             <tr> 
@@ -42,6 +44,7 @@
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
+                    <div class="invalid-feedback"><?=form_error('sks')?></div> 
                 </td>
             </tr>
             <tr>
