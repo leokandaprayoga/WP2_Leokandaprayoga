@@ -1,84 +1,28 @@
-<?php
-class Autentifikasi extends CI_Controller
-{
-    public function index()
-    {
-        //jika statusnya sudah login, maka tidak bisa mengakses
-//halaman login alias dikembalikan ke tampilan user
-        if ($this->session->userdata('email')) {
-            redirect('user');
-        }
-        $this->form_validation->set_rules(
-            'email',
-            'Alamat Email',
-            'required|trim|valid_email',
-            [
-                'required' => 'Email Harus diisi!!',
-                'valid_email' => 'Email Tidak Benar!!'
-            ]
-        );
-        $this->form_validation->set_rules(
-            'password',
-            'Password',
-            'required|trim',
-            [
-                'required' => 'Password Harus diisi'
-            ]
-        );
-        if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Login';
-            $data['user'] = '';
-            //kata 'login' merupakan nilai dari variabel judul dalam
-//array $data dikirimkan ke view aute_header
-            $this->load->view('templates/aute_header', $data);
-            $this->load->view('autentifikasi/login');
-            $this->load->view('templates/aute_footer');
-        } else {
-            $this->_login();
-        }
-    }
-    private function _login()
-    {
-        $email = htmlspecialchars($this->input->post(
-            'email',
-            true
-        )
-        );
-        $password = $this->input->post('password', true);
-        $user = $this->ModelUser->cekData(['email' => $email])->row_array();
-        //jika usernya ada
-        if ($user) {
-            //jika user sudah aktif
-            if ($user['is_active'] == 1) {
-                //cek password
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'email' => $user['email'],
-                        'role_id' => $user['role_id']
-                    ];
-                    $this->session->set_userdata($data);
-                    if ($user['role_id'] == 1) {
-                        redirect('admin');
-                    } else {
-                        if ($user['image'] == 'default.jpg') {
-                            $this->session->set_flashdata(
-                                'pesan',
-                                '<div class="alert alert-info alert-message" role="alert">Silahkan Ubah Profile Anda untuk Ubah Photo Profil</div>'
-                            );
-                        }
-                        redirect('user');
-                    }
-                } else {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah!!</div>');
-                    redirect('autentifikasi');
-                }
-            } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">User belum diaktifasi!!</div>');
-                redirect('autentifikasi');
-            }
-        } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak terdaftar!!</div>');
-            redirect('autentifikasi');
-        }
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>pustaka-booking | <?= $judul; ?></title>
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/'); ?>datatable/datatables.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="<?= base_url('assets/'); ?>datatable/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets/'); ?>datatable/datatables.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top" class="d-flex">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Konten halaman Anda di sini -->
+    </div>
+</body>
+
+</html>

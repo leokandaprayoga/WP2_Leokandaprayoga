@@ -1,12 +1,10 @@
 <!-- Footer -->
-
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            87
-            <span>Copyright &copy; Web Programming Univ. BSI with
-                Bootstrap SB Admin 2 <?= date('Y'); ?></span>
-        </div>
+        <div class="copyright text-center my-auto"></div>
+        <span>Copyright &copy; Web Programming Univ. BSI with
+            Bootstrap SB Admin 2 <?= date('Y'); ?></span>
+    </div>
     </div>
 </footer>
 <!-- End of Footer -->
@@ -40,12 +38,9 @@
         </div>
     </div>
 </div>
-88
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/');
-?>vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url('assets/');
-?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/');?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/');?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jqueryeasing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
