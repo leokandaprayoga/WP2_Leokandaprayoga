@@ -36,7 +36,7 @@
             </div>
             <div class="form-group row justify-content-end">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btnprimary">Ubah</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
                     <button class="btn btn-dark" onclick="window.history.go(-1)"> Kembali</button>
                 </div>
             </div>

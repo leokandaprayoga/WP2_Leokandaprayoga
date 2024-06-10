@@ -47,7 +47,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/ubah-profile', $data);
+            $this->load->view('user/ubah_profile', $data);
             $this->load->view('templates/footer');
         } else {
             $nama = $this->input->post('nama', true);
